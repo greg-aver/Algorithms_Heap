@@ -37,13 +37,19 @@ class HeapTest {
     }
 
     @Test
+    void getMax_return11() {
+        heap.MakeHeap(new int[] {11, 9, 1}, 1);
+        assertThat(heap.GetMax(), is(11));
+    }
+
+    @Test
     void getMax() {
-        heap.MakeHeap(new int[]{1, 4, 2, 8, 9, 11, 3, 5, 7, 8, 6}, 3);
+        heap.MakeHeap(new int[]{1, 4, 2, 8, 9, 11, 3, 5, 7, 6}, 3);
         assertThat(heap.GetMax(), is(11));
         try {
             Field field = heap.getClass().getDeclaredField("heapSize");
             field.setAccessible(true);
-            assertThat(field.get(heap), is(10));
+            assertThat(field.get(heap), is(9));
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
