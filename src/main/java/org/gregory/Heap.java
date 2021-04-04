@@ -16,72 +16,27 @@ class Heap {
         for (int i = getHeapSize() / 2; i >= 0; i--) {
             orderingVertex(i);
         }
-        /*        for (int i = getHeapSize() / 2; i >= 0; i--) {
-            orderingVertex(i);
-        }*/
     }
 
-    /*    private int orderingVertex(int indexVertex) {
-            int indexLeftChild = 2 * indexVertex + 1;
-            int indexRightChild = 2 * indexVertex + 2;
-            int indexLagestChild = indexVertex;
-
-            if (indexLeftChild < getHeapSize() && HeapArray[indexVertex] < HeapArray[indexLeftChild]) {
-                indexLagestChild = indexLeftChild;
-            }
-            if (indexRightChild < getHeapSize() && HeapArray[indexVertex] < HeapArray[indexRightChild]) {
-                indexLagestChild = indexRightChild;
-            }
-            if (indexLagestChild == indexVertex) {
-                return indexLagestChild;
-            }
-            swap(indexLagestChild, indexVertex);
-            orderingVertex(indexLagestChild);
-        }*/
-
-
-    /*private void orderingVertex(int indexVertex) {
-        int indexLeftChild = 2 * indexVertex + 1;
-        int indexRightChild = 2 * indexVertex + 2;
-        int indexLargestChild = indexVertex;
-
-        if (indexLeftChild < getHeapSize() && HeapArray[indexVertex] < HeapArray[indexLeftChild]) {
-            indexLargestChild = indexLeftChild;
-        }
-        if (indexRightChild < getHeapSize() && HeapArray[indexVertex] < HeapArray[indexRightChild]) {
-            indexLargestChild = indexRightChild;
-        }
-        if (indexLargestChild == indexVertex) {
-            return;
-        }
-        swap(indexLargestChild, indexVertex);
-        orderingVertex(indexLargestChild);
-    }*/
-
-    public void orderingVertex(int i)
-    {
+    public void orderingVertex(int i) {
         int leftChild;
         int rightChild;
         int largestChild;
 
-        for (; ; )
-        {
+        for (; ; ) {
             leftChild = 2 * i + 1;
             rightChild = 2 * i + 2;
             largestChild = i;
 
-            if (leftChild < heapSize && HeapArray[leftChild] > HeapArray[largestChild])
-            {
+            if (leftChild < heapSize && HeapArray[leftChild] > HeapArray[largestChild]) {
                 largestChild = leftChild;
             }
 
-            if (rightChild < heapSize && HeapArray[rightChild] > HeapArray[largestChild])
-            {
+            if (rightChild < heapSize && HeapArray[rightChild] > HeapArray[largestChild]) {
                 largestChild = rightChild;
             }
 
-            if (largestChild == i)
-            {
+            if (largestChild == i) {
                 break;
             }
 
@@ -91,24 +46,6 @@ class Heap {
             i = largestChild;
         }
     }
-
-    /*   private int orderingVertex(int indexVertex) {
-        int leftChild = 2 * indexVertex + 1;
-        int rightChild = 2 * indexVertex + 2;
-        int lagestChild = indexVertex;
-
-        if (HeapArray[indexVertex] < HeapArray[leftChild]) {
-            lagestChild = orderingVertex(leftChild);
-        }
-        if (HeapArray[indexVertex] < HeapArray[rightChild]) {
-            lagestChild = orderingVertex(rightChild);
-        }
-        if (lagestChild == indexVertex) {
-            return indexVertex;
-        }
-        swap(lagestChild, indexVertex);
-        return lagestChild;
-    }*/
 
     public int GetMax() {
         // вернуть значение корня и перестроить кучу
@@ -121,10 +58,10 @@ class Heap {
     }
 
     private void addVertexAndRebuildHeap() {
-        int rootNew = HeapArray[getHeapSize() - 1];
-        HeapArray[getHeapSize()] = 0;
+        HeapArray[0] = HeapArray[getHeapSize() - 1];
+        HeapArray[getHeapSize() - 1] = 0;
         heapSizeDecrement();
-        orderingVertex(rootNew);
+        orderingVertex(0);
     }
 
     public boolean Add(int key) {
@@ -166,3 +103,4 @@ class Heap {
         return heapSize;
     }
 }
+
