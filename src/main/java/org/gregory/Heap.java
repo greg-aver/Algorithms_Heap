@@ -1,4 +1,5 @@
 package org.gregory;
+import java.util.*;
 
 class Heap {
     public int[] HeapArray; // хранит неотрицательные числа-ключи
@@ -78,7 +79,7 @@ class Heap {
     private void findPlace(int indexCurrent, int key) {
         int indexParent = (indexCurrent - 1) / 2;
         //termination conditions
-        if (key > indexParent) {
+        if (key <= HeapArray[indexParent]) {
             return;
         }
         swap(indexParent, indexCurrent);
